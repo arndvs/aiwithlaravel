@@ -10,7 +10,7 @@ class FirstPrompt1
 {
     use AsAction;
 
-    public function run()
+    public function handle()
     {
         return OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
