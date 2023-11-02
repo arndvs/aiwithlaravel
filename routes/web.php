@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Prompts\FirstPrompt4;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (FirstPrompt4 $firstPrompt4) {
+    return response()->json($firstPrompt4->run('how many leafs are on a tree?'));
+    // return $firstPrompt4->run('how many leafs are on a tree?');
+    // return view('welcome');
 });
