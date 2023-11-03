@@ -2,15 +2,10 @@
 
 namespace App\Actions\Prompts;
 
-use Illuminate\Console\Command;
-use Lorisleiva\Actions\Concerns\AsAction;
 use OpenAI\Laravel\Facades\OpenAI;
 
 class FirstPrompt
 {
-    use AsAction;
-
-    public $commandSignature = 'inspire {prompt : The user prompt}';
 
     public function handle(array $messages)
     {
@@ -20,8 +15,4 @@ class FirstPrompt
                 ]);
     }
 
-    public function asCommand(Command $command)
-    {
-        $command->comment($this->handle($command->argument('prompt')));
-    }
 }
