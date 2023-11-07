@@ -1,7 +1,9 @@
 <?php
 
+use App\Actions\AI\Prompts\TestPrompt;
 use App\Actions\Prompts\FirstPrompt1;
 use App\Actions\Prompts\FirstPrompt2;
+use App\Actions\Prompts\FirstPrompt4;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use OpenAI\Laravel\Facades\OpenAI;
@@ -18,7 +20,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 */
 
 
-Artisan::command('prompt0', function () {
+Artisan::command('prompt', function () {
     $this->comment(
         OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
@@ -32,16 +34,15 @@ Artisan::command('prompt0', function () {
             );
 })->purpose('make and run');
 
-Artisan::command('prompt1', function () {
-    $this->comment(
-        FirstPrompt1::make()->run()
-    );
-})->purpose('make and run');
 
-Artisan::command('prompt2', function (FirstPrompt2 $firstPrompt2) {
-    $this->comment(
-        $firstPrompt2->run()
-    );
-})->purpose('inject as dependency');
 
 // call the action as a command with pa prompt3, pa prompt4
+
+Artisan::command('ai:test-prompt {prompt}', function (string $prompt) {
+    $testPrompt = new TestPrompt();
+    $response = $testPrompt->handle($prompt);
+
+    $messages = $response['choices'][0]['message']['content'];
+
+    $this->info($messages);
+})->purpose('Ask a question in the context of a customer');

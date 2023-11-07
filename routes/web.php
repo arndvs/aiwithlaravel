@@ -1,10 +1,11 @@
 <?php
 
-use App\Actions\Prompts\ChatPrompt;
-use App\Actions\Prompts\FirstPrompt;
+
+
+use App\Actions\AI\Prompts\FirstPrompt;
+use App\Actions\AI\Prompts\FirstPrompt4;
 use Illuminate\Http\Request;
-use App\Actions\Prompts\FirstPrompt1;
-use App\Actions\Prompts\FirstPrompt4;
+
 use App\Models\Conversation;
 use App\Models\Message;
 use Illuminate\Support\Facades\Route;

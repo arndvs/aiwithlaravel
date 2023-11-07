@@ -8,18 +8,18 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class FirstPrompt2
 {
-    use AsAction;
 
 
 
-    public function run()
+
+    public function run(string $prompt)
     {
         return OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => 'Where are the tacos?'
+                    'content' => $prompt
                 ]
             ]
         ])->choices[0]->message->content;

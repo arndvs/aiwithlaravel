@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Actions\Prompts;
+namespace App\Actions\AI\Prompts;
 
-use Illuminate\Console\Command;
-use Lorisleiva\Actions\Concerns\AsAction;
+
 use OpenAI\Laravel\Facades\OpenAI;
 
 class FirstPrompt4
 {
-    use AsAction;
-
-    public $commandSignature = 'prompt4 {prompt : the user prompt}';
-
 
     public function run(string $prompt)
     {
@@ -26,10 +21,5 @@ class FirstPrompt4
                 ]));
     }
 
-    public function asCommand(Command $command)
-    {
-        $command->comment(
-            $this->run($command->argument('prompt'))
-        );
-    }
+
 }
