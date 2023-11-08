@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Prompts;
+namespace App\Actions\AI\Prompts;
 
 use Illuminate\Console\Command;
 use Lorisleiva\Actions\Concerns\AsAction;
